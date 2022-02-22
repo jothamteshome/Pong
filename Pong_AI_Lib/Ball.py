@@ -18,7 +18,7 @@ class Ball(Item):
 
         # Shoot to the left if 0, otherwise shoot to the right
         if self.__shoot_towards == 0:
-            self.set_speed(-self.get_speed())
+            self.set_speed(-abs(self.get_speed()))
 
         # Set the position of the ball
         self.set_xpos(xpos)
@@ -28,6 +28,3 @@ class Ball(Item):
         pygame.draw.rect(context, self.get_color(), pygame.Rect(self.get_xpos() - self.__side / 2,
                                                                 self.get_ypos() - self.__side / 2, self.__side,
                                                                 self.__side))
-
-    def update(self, elapsed):
-        pass
