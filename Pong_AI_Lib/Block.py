@@ -14,3 +14,6 @@ class Block(Item):
     def draw(self, context):
         pygame.draw.rect(context, self.get_color(), pygame.Rect(self.get_xpos(), self.get_ypos() - self.__height / 2,
                                                                 self.__width, self.__height))
+
+    def update(self, elapsed):
+        pass

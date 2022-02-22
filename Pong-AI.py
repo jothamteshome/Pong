@@ -3,17 +3,21 @@ import pygame
 from pygame.locals import *
 
 from Pong_AI_Lib.Game import Game
+import random
 
 
 class App:
     def __init__(self):
         self._running = True
         self._display_surf = None
-        self.size = self.weight, self.height = 858, 525
+        self.size = self.weight, self.height = 858, 530
+        self.game = None
+        random.seed()
 
     def on_init(self):
         pygame.init()
         self._display_surf = pygame.display.set_mode(self.size, pygame.HWSURFACE | pygame.DOUBLEBUF)
+        self.game = Game(self._display_surf, self.size)
         self._running = True
 
     def on_event(self, event):
@@ -24,8 +28,7 @@ class App:
         pass
 
     def on_render(self):
-        game = Game(self.size)
-        game.draw(self._display_surf)
+        self.game.draw()
         pygame.display.flip()
 
     def on_cleanup(self):

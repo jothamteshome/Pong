@@ -8,6 +8,9 @@ class Item:
     def draw(self, context):
         pass
 
+    def update(self, elapsed):
+        pass
+
     def set_xpos(self, xpos):
         self.__xpos = xpos
 
