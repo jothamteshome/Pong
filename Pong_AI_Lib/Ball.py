@@ -2,7 +2,8 @@ from Pong_AI_Lib.Item import Item
 import pygame
 import random
 
-Ball_Speed = 1.5        # Speed of the ball
+Min_Ball_Speed = 1.5    # Minimum speed of the ball
+Max_Ball_Speed = 2.5    # Maximum speed of the ball
 Shift_Y_Range = 150     # Shift from center ball can start at
 Ball_Size = 10          # Side length of ball
 
@@ -15,8 +16,8 @@ class Ball(Item):
         self.__game = game
 
         # Set the speed of the ball on construction
-        self.set_x_speed(Ball_Speed)
-        self.set_y_speed(Ball_Speed)
+        self.set_x_speed(Min_Ball_Speed)
+        self.set_y_speed(Min_Ball_Speed)
 
         # Get random shift amount for ball to start at
         self.__starting_y = random.randint(-Shift_Y_Range, Shift_Y_Range)
@@ -64,14 +65,18 @@ class Ball(Item):
 
             # Flip which side the ball will shoot next
             if self.__shoot_left:
-                self.set_x_speed(-abs(self.get_x_speed()))
+                self.set_x_speed(-abs(random.uniform(Min_Ball_Speed, Max_Ball_Speed)))
                 self.__shoot_left = False
             else:
-                self.set_x_speed(abs(self.get_x_speed()))
+                self.set_x_speed(abs(random.uniform(Min_Ball_Speed, Max_Ball_Speed)))
                 self.__shoot_left = True
 
             # Pause game for a second before resuming
             pygame.time.delay(1000)
+
+            # Set the y-speed to a random number to shoot the ball in a
+            # different direction every time
+            self.set_y_speed(random.uniform(Min_Ball_Speed, Max_Ball_Speed))
 
             # Reset the ball to the middle of the screen
             self.set_xpos(self.__game.get_display_width() / 2)
@@ -85,14 +90,18 @@ class Ball(Item):
 
             # Flip which side the ball will shoot next
             if self.__shoot_left:
-                self.set_x_speed(-abs(self.get_x_speed()))
+                self.set_x_speed(-abs(random.uniform(Min_Ball_Speed, Max_Ball_Speed)))
                 self.__shoot_left = False
             else:
-                self.set_x_speed(abs(self.get_x_speed()))
+                self.set_x_speed(abs(random.uniform(Min_Ball_Speed, Max_Ball_Speed)))
                 self.__shoot_left = True
 
             # Pause game for a second before resuming
             pygame.time.delay(1000)
+
+            # Set the y-speed to a random number to shoot the ball in a
+            # different direction every time
+            self.set_y_speed(random.uniform(Min_Ball_Speed, Max_Ball_Speed))
 
             # Reset the ball to the middle of the screen
             self.set_xpos(self.__game.get_display_width() / 2)
