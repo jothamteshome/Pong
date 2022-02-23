@@ -56,8 +56,8 @@ class Ball(Item):
         self.set_xpos(self.get_xpos() + self.get_x_speed())
         self.set_ypos(self.get_ypos() + self.get_y_speed())
 
-        # If the ball goes off the left end
-        if self.get_xpos() < 0:
+        # If the entire ball goes off the left end
+        if (self.get_xpos() + Ball_Size) < 0:
             # Update scoreboard to reflect right winning round
             current_score = self.__game.get_scoreboard().get_score()
             self.__game.get_scoreboard().update_score(current_score[0], current_score[1] + 1)
@@ -70,12 +70,15 @@ class Ball(Item):
                 self.set_x_speed(abs(self.get_x_speed()))
                 self.__shoot_left = True
 
+            # Pause game for a second before resuming
+            pygame.time.delay(1000)
+
             # Reset the ball to the middle of the screen
             self.set_xpos(self.__game.get_display_width() / 2)
             self.set_ypos(self.__game.get_display_height() / 2 + random.randint(-Shift_Y_Range, Shift_Y_Range))
 
-        # If the ball goes off the right end
-        elif self.get_xpos() > self.__game.get_display_width():
+        # If the entire ball goes off the right end
+        elif (self.get_xpos() - Ball_Size) > self.__game.get_display_width():
             # Update scoreboard to reflect left winning round
             current_score = self.__game.get_scoreboard().get_score()
             self.__game.get_scoreboard().update_score(current_score[0] + 1, current_score[1])
@@ -87,6 +90,9 @@ class Ball(Item):
             else:
                 self.set_x_speed(abs(self.get_x_speed()))
                 self.__shoot_left = True
+
+            # Pause game for a second before resuming
+            pygame.time.delay(1000)
 
             # Reset the ball to the middle of the screen
             self.set_xpos(self.__game.get_display_width() / 2)
