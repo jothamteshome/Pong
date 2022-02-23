@@ -8,7 +8,7 @@ class Item:
         self.__color = (255, 255, 255)
 
         # Store the speeds of the item
-        self.__y_speed = 3
+        self.__y_speed = 7
         self.__x_speed = 0
 
     def draw(self, context):

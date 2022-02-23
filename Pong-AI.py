@@ -13,7 +13,7 @@ class App:
         self._display_surf = None
         self.size = self.weight, self.height = 858, 530
         self.game = None
-        self.fps = 144
+        self.fps = 60
         self.fps_clock = pygame.time.Clock()
 
         random.seed()

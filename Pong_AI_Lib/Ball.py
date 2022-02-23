@@ -2,8 +2,8 @@ from Pong_AI_Lib.Item import Item
 import pygame
 import random
 
-Min_Ball_Speed = 1.5    # Minimum speed of the ball
-Max_Ball_Speed = 2.5    # Maximum speed of the ball
+Min_Ball_Speed = 4.5    # Minimum speed of the ball
+Max_Ball_Speed = 5.5    # Maximum speed of the ball
 Shift_Y_Range = 150     # Shift from center ball can start at
 Ball_Size = 10          # Side length of ball
 
@@ -51,14 +51,19 @@ class Ball(Item):
 
         # If ball is colliding with either paddle, make it bounce the other way
         if self.__rectangle.colliderect(left_paddle) or self.__rectangle.colliderect(right_paddle):
-            self.set_x_speed(-self.get_x_speed())
+            # If the edge of the ball has passed the playing edge of the paddle when they collide,
+            # don't change directions. This is to stop the ball from being inside the paddle
+            if (self.get_xpos() < 25) or (self.get_xpos() > self.__game.get_display_width() - 35):
+                pass
+            else:
+                self.set_x_speed(-self.get_x_speed())
 
         # Update the position of the ball
         self.set_xpos(self.get_xpos() + self.get_x_speed())
         self.set_ypos(self.get_ypos() + self.get_y_speed())
 
         # If the entire ball goes off the left end
-        if (self.get_xpos() + Ball_Size) < 0:
+        if (self.get_xpos() + 2 * Ball_Size) < 0:
             # Update scoreboard to reflect right winning round
             current_score = self.__game.get_scoreboard().get_score()
             self.__game.get_scoreboard().update_score(current_score[0], current_score[1] + 1)
@@ -83,7 +88,7 @@ class Ball(Item):
             self.set_ypos(self.__game.get_display_height() / 2 + random.randint(-Shift_Y_Range, Shift_Y_Range))
 
         # If the entire ball goes off the right end
-        elif (self.get_xpos() - Ball_Size) > self.__game.get_display_width():
+        elif (self.get_xpos() - 2 * Ball_Size) > self.__game.get_display_width():
             # Update scoreboard to reflect left winning round
             current_score = self.__game.get_scoreboard().get_score()
             self.__game.get_scoreboard().update_score(current_score[0] + 1, current_score[1])
