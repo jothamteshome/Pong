@@ -29,6 +29,7 @@ class App:
             self._running = False
 
     def on_loop(self):
+        self.game.update()
         keys = pygame.key.get_pressed()
         if keys[pygame.K_UP]:
             self.game.on_up()
@@ -38,12 +39,13 @@ class App:
             self.game.on_w()
         if keys[pygame.K_s]:
             self.game.on_s()
+        pygame.display.update()
 
     def on_render(self):
         self._display_surf.fill((0, 0, 0))
         self.game.draw()
         pygame.display.flip()
-        pygame.display.update()
+        #pygame.display.update()
         self.fps_clock.tick(self.fps)
 
     def on_cleanup(self):

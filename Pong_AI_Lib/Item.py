@@ -3,12 +3,13 @@ class Item:
         self.__xpos = 50
         self.__ypos = 50
         self.__color = (255, 255, 255)
-        self.__speed = 3
+        self.__y_speed = 3
+        self.__x_speed = 0
 
     def draw(self, context):
         pass
 
-    def update(self, elapsed):
+    def update(self):
         pass
 
     def set_xpos(self, xpos):
@@ -23,15 +24,22 @@ class Item:
     def get_ypos(self):
         return self.__ypos
 
-    def set_speed(self, speed):
-        self.__speed = speed
+    def set_y_speed(self, y_speed):
+        self.__y_speed = y_speed
 
-    def get_speed(self):
-        return self.__speed
+    def get_y_speed(self):
+        return self.__y_speed
+
+    def set_x_speed(self, x_speed):
+        self.__x_speed = x_speed
+
+    def get_x_speed(self):
+        return self.__x_speed
 
     def set_color(self, color):
         self.__color = color
 
     def get_color(self):
         return self.__color
+
 
