@@ -1,7 +1,7 @@
-from Pong_AI_Lib.Block import Block
-from Pong_AI_Lib.Ball import Ball
-from Pong_AI_Lib.Background import Background
-from Pong_AI_Lib.Scoreboard import Scoreboard
+from PongLib.Block import Block
+from PongLib.Ball import Ball
+from PongLib.Background import Background
+from PongLib.Scoreboard import Scoreboard
 
 
 class Game:

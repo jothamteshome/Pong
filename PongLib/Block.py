@@ -1,4 +1,4 @@
-from Pong_AI_Lib.Item import Item
+from PongLib.Item import Item
 import pygame
 
 Block_Height = 50

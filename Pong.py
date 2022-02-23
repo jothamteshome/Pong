@@ -1,6 +1,6 @@
 import pygame
 
-from Pong_AI_Lib.Game import Game
+from PongLib.Game import Game
 import random
 
 

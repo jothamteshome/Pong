@@ -1,4 +1,4 @@
-from Pong_AI_Lib.Item import Item
+from PongLib.Item import Item
 import pygame
 import random
 
@@ -81,7 +81,8 @@ class Ball(Item):
 
             # Set the y-speed to a random number to shoot the ball in a
             # different direction every time
-            self.set_y_speed(random.uniform(Min_Ball_Speed, Max_Ball_Speed))
+            self.set_y_speed(random.choice([random.uniform(-Min_Ball_Speed, -Max_Ball_Speed),
+                                            random.uniform(Min_Ball_Speed, Max_Ball_Speed)]))
 
             # Reset the ball to the middle of the screen
             self.set_xpos(self.__game.get_display_width() / 2)
@@ -106,7 +107,8 @@ class Ball(Item):
 
             # Set the y-speed to a random number to shoot the ball in a
             # different direction every time
-            self.set_y_speed(random.uniform(Min_Ball_Speed, Max_Ball_Speed))
+            self.set_y_speed(random.choice([random.uniform(-Min_Ball_Speed, -Max_Ball_Speed),
+                                            random.uniform(Min_Ball_Speed, Max_Ball_Speed)]))
 
             # Reset the ball to the middle of the screen
             self.set_xpos(self.__game.get_display_width() / 2)
