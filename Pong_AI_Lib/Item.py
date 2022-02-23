@@ -1,8 +1,13 @@
 class Item:
     def __init__(self):
+        # Store the position of the item
         self.__xpos = 50
         self.__ypos = 50
+
+        # Store the color of the item
         self.__color = (255, 255, 255)
+
+        # Store the speeds of the item
         self.__y_speed = 3
         self.__x_speed = 0
 

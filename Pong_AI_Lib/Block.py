@@ -1,10 +1,11 @@
 from Pong_AI_Lib.Item import Item
 import pygame
 
+Block_Height = 50
+Block_Width = 10
+
 
 class Block(Item):
-    __height = 50
-    __width = 10
 
     def __init__(self, xpos, ypos):
         super().__init__()
@@ -13,14 +14,17 @@ class Block(Item):
         self.__rectangle = None
 
     def draw(self, context):
+        # Draw paddle on context
         pygame.draw.rect(context, self.get_color(), self.__rectangle)
 
     def move(self):
+        # Move paddle
         self.set_ypos(self.get_ypos() + self.get_y_speed())
 
     def update(self):
-        self.__rectangle = pygame.Rect(self.get_xpos(), self.get_ypos() - self.__height / 2,
-                                       self.__width, self.__height)
+        # Update paddle position
+        self.__rectangle = pygame.Rect(self.get_xpos(), self.get_ypos() - Block_Height / 2,
+                                       Block_Width, Block_Height)
 
     def get_rect(self):
         return self.__rectangle

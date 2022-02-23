@@ -3,13 +3,19 @@ import pygame.font
 
 class Scoreboard:
     def __init__(self, context, display_size):
+        # Save the graphics context and size of the display
         self.__context = context
         self.__display_size = display_size
+
+        # The score of the two players
         self.__left_score = 0
         self.__right_score = 0
+
+        # Font to write the score in
         self.__font = pygame.font.Font('freesansbold.ttf', 48)
 
     def draw(self):
+        # Write the current score on the board
         text_left = self.__font.render(str(self.__left_score), True, (255, 255, 255))
         text_right = self.__font.render(str(self.__right_score), True, (255, 255, 255))
         text_rect_left = text_left.get_rect()
