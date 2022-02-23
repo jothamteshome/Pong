@@ -2,7 +2,6 @@ from Pong_AI_Lib.Block import Block
 from Pong_AI_Lib.Ball import Ball
 from Pong_AI_Lib.Background import Background
 from Pong_AI_Lib.Scoreboard import Scoreboard
-import pygame
 
 
 class Game:
