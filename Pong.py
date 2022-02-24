@@ -19,7 +19,7 @@ class App:
     def on_init(self):
         # Initialize window and game
         pygame.init()
-        pygame.display.set_caption('Pong AI')
+        pygame.display.set_caption('Pong')
         self._display_surf = pygame.display.set_mode(self.size, pygame.HWSURFACE | pygame.DOUBLEBUF)
         self.game = Game(self._display_surf, self.size)
         self._running = True
