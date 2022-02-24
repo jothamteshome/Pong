@@ -49,14 +49,17 @@ class Ball(Item):
         self.__rectangle = pygame.Rect(self.get_xpos() - Ball_Size / 2, self.get_ypos() - Ball_Size / 2,
                                        Ball_Size, Ball_Size)
 
-        # If ball is colliding with either paddle, make it bounce the other way
-        if self.__rectangle.colliderect(left_paddle) or self.__rectangle.colliderect(right_paddle):
-            # If the edge of the ball has passed the playing edge of the paddle when they collide,
-            # don't change directions. This is to stop the ball from being inside the paddle
-            if (self.get_xpos() < 25) or (self.get_xpos() > self.__game.get_display_width() - 35):
-                pass
-            else:
-                self.set_x_speed(-self.get_x_speed())
+        # If ball is colliding with the left paddle, change the position
+        # to one pixel to the right of the left paddle and shoot it to the right
+        if self.__rectangle.colliderect(left_paddle):
+            self.set_xpos(36)
+            self.set_x_speed(abs(self.get_x_speed()))
+
+        # If the ball is colliding with the right paddle, change the position
+        # to one pixel to the left of the right paddle and shoot it to the left
+        elif self.__rectangle.colliderect(right_paddle):
+            self.set_xpos(self.__game.get_display_width() - 36)
+            self.set_x_speed(-abs(self.get_x_speed()))
 
         # Update the position of the ball
         self.set_xpos(self.get_xpos() + self.get_x_speed())
